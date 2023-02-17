@@ -1,4 +1,24 @@
 from random import* 
+def izmena(user:list,password:list)->list:
+    user = input("Введите ваш логин: \n")   #\n строка вниз
+    if user in password:
+         password = input("Введите ваш пароль: \n")
+         if password == password[user]:
+              print(password)
+              print("Смена пароля")
+              print("Введите ваш новый пароль")
+              password = input()
+              password.update({})    #update обновляет параметры
+              print(password)
+         else:
+              print("Пароль неверный")
+    else:
+         print("Логин не найден")               
+    return password
+
+
+
+
 def avtor(user:list,password:list)->list:
     """
     Авторизация пользователя
@@ -35,6 +55,7 @@ def registr(user:list,password:list):
         salasona=Salasona(5)
         user.append(nimi)
         password.append(salasona)
+
 
 
 
