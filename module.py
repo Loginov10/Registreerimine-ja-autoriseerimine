@@ -1,68 +1,56 @@
-from random import*
+ffrom random import*
 import string 
 def izmenauser(user:list,password:list)->list:
     """
-    смена пользователя
+    Kasutaja nimi muutmine
     """
-    nimi=input("Введите имя:")
-    sala=input("Введите пароль: ")
+    nimi=input("Sisestage kasutaja nimi: ")
     if nimi in user:
-        ind=user.index(nimi)
-        if sala==password[ind]:
-            print("Добро пожаловать")
-            nimi1=input("Введите новое имя: ")           
-            for i in range(0,len(user)):
-                user=user.insert(user[i],user[nimi1])
-                print(user)
-        else:
-            print("Неверный пароль")
+        nuser=input("Sisestage uus kasutaja nimi: ")
+        user[user.index(nimi)]=nuser
+        print("See on teie uus kasutaja nimi:",nuser)
     else:
-        print("Имя не найденно")
-
+        print("Vale")
+    return nuser
 
 
 
 def izmenapass(user:list,password:list)->list:
     """
-    смена пароля
+    Parooli muutmine
     """
-    user=input("Введите ваш логин: \n")   #\n строка вниз
-    if user in password:
-         password=input("Введите ваш пароль: \n")
-         if password==password[password]:
-              print(password)
-              print("Смена пароля")
-              print("Введите ваш новый пароль")
-              password = input()
-              password[password]=password    #update обновляет параметры
-              print(password)
-         else:
-              print("Пароль неверный")
+    nimi=input("Sisestage kasutajanimi: ")
+    password=input("Sisestage parool: ")
+    if nimi in user and user[nimi]==password:
+        npass=input("Sisestage uss parool: ")
+        user[nimi]==npass
+        print("See on teie uus parool",npass)
     else:
-         print("Логин не найден")               
-    return password
+        print("Vale")
+    return npass
+
 
 
 
 
 def avtor(user:list,password:list)->list:
     """
-    Авторизация пользователя
+    Kasutaja autoriseerimine
     """
-    nimi=input("Введите имя:")
-    sala=input("Введите пароль: ")
+    nimi=input("Sisestage kasutajanimi:")
+    sala=input("Sisestage Parool: ")
     if nimi in user:
         ind=user.index(nimi)
         if sala==password[ind]:
-            print("Добро пожаловать")
+            print("Tere Tulemast")
         else:
-            print("Неверный пароль")
+            print("Vale parool")
     else:
-        print("Имя не найденно")
+        print("Kasutajanime ei leitud")
     return nimi,sala
 
 
-def Salasona(k: int):
+def Salasona(k: int):  
   sala=""
   for i in range(k):
     t=choice(string.ascii_letters) #Aa...Zz
@@ -73,14 +61,25 @@ def Salasona(k: int):
   return sala
 
 def registr(user:list,password:list):
-    nimi=input("Введите имя: ")
-    v=int(input("1-Сделать пароль, 2-Сгенерировать"))
+    """
+    Registreerimine
+    """
+    nimi=input("Sisestage kasutajanimi: ")
+    v=int(input("1-Parooli tegemine, 2-Luua"))
     if v==1:
-        pass
+        v2=input("Sisestage Parool: ")
+        if len(password) < 8:
+            return False
+        if not any(char.isdigit() for char in password):   # пароль содержит хотя бы одну цифру
+            return False
+        if not any(char.isupper() for char in password):   # пароль содержит одну заглавную букву
+            return False
+        else:
+            print("Vale")
+        return True
     else:
         salasona=Salasona(5)
         user.append(nimi)
         password.append(salasona)
-
-
+    return user,password
 
