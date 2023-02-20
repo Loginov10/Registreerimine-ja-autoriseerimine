@@ -1,14 +1,40 @@
-from random import* 
-def izmena(user:list,password:list)->list:
-    user = input("Введите ваш логин: \n")   #\n строка вниз
+from random import*
+import string 
+def izmenauser(user:list,password:list)->list:
+    """
+    смена пользователя
+    """
+    nimi=input("Введите имя:")
+    sala=input("Введите пароль: ")
+    if nimi in user:
+        ind=user.index(nimi)
+        if sala==password[ind]:
+            print("Добро пожаловать")
+            nimi1=input("Введите новое имя: ")           
+            for i in range(0,len(user)):
+                user=user.insert(user[i],user[nimi1])
+                print(user)
+        else:
+            print("Неверный пароль")
+    else:
+        print("Имя не найденно")
+
+
+
+
+def izmenapass(user:list,password:list)->list:
+    """
+    смена пароля
+    """
+    user=input("Введите ваш логин: \n")   #\n строка вниз
     if user in password:
-         password = input("Введите ваш пароль: \n")
-         if password == password[user]:
+         password=input("Введите ваш пароль: \n")
+         if password==password[password]:
               print(password)
               print("Смена пароля")
               print("Введите ваш новый пароль")
               password = input()
-              password.update({})    #update обновляет параметры
+              password[password]=password    #update обновляет параметры
               print(password)
          else:
               print("Пароль неверный")
@@ -55,7 +81,6 @@ def registr(user:list,password:list):
         salasona=Salasona(5)
         user.append(nimi)
         password.append(salasona)
-
 
 
 
