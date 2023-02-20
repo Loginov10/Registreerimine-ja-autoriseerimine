@@ -1,29 +1,29 @@
 from module import*
-user=["gena","valja"]
-password=["12345","gaga"]
+user=["vena"]
+password=["12345"]
 while True:
-    print("1-Регистрация, 2-Авторизация, 3-Выход, 4-Смена пароля, 5-Смена пользователя")
+    print("1-registreerimine, 2-Autoriseerimine, 3-Väljapääs, 4-Parooli muutmine, 5-Kasutajanimi muutmine")
     a=int(input())
     if a==1:
-        user,password=registr(user,password)
+       registr(user,password)
     
     elif a==2:
         avtor(user,password)
 
     elif a==3:
-        print("Выход")
+        print("Väljapää")
         break
     
     elif a==4:
-        print("Смена пароля")
+        print("Parooli muutmine")
         izmenapass(password,user)
 
     elif a==5:
-        print("Смена пользователя")
+        print("Kasutajanimi muutmine")
         izmenauser(user,password)
       
     else:
-        print("Введи правильно")
+        print("Sisestage õigesti")
    
     
     
